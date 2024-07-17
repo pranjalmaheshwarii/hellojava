@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        // Install the Java version specified in your environment or Jenkins config
-        jdk 'JDK11'
-    }
-
     stages {
         stage('Checkout') {
             steps {
