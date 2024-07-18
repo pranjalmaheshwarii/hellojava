@@ -33,7 +33,8 @@ pipeline {
                     if (containerExists) {
                         sh "docker cp webapps tomcat-serever:/usr/local/tomcat/webapps"
                     } else {
-                        sh "docker run -d -p 34.16.164.80:8080 -v $(pwd)/webapps:/usr/local/tomcat/webapps --name tomcat-server tomcat"
+                        sh "docker run -d -p 34.16.164.80:8090 -v $(pwd)/webapps:/usr/local/tomcat/webapps --name tomcat-server tomcat"
+                        deploy adapters: [tomcat9(path: '', url: 'http://34.16.164.80:8090/')], contextPath: null, war: '**/*.war'
                     }
                 }
             }
